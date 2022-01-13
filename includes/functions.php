@@ -1,6 +1,9 @@
 <?php
 session_start();
 global $conn;
+function get_user_active() {
+    return isset($_SESSION['user']) ? $_SESSION['user'] : array();
+}
  function db_connect() {
     global $conn;
 $conn = mysqli_connect("localhost","root","", "my_app");

@@ -8,6 +8,11 @@
 <body>
 
 <?php 
+ $user = get_user_active();
+ if(!empty($user)) {
+ 	 header('location: admin/dashboard.php');
+ }
+
  if(isset($_POST['submit'])) { 
    	  $username = $_POST['username'];
    	  $password = $_POST['password'];
@@ -30,9 +35,7 @@
          </div>
           <input type="submit" name="submit" value="Submit" />
      </form>
-
-
-  </div>
+</div>
 
 </body>
 </html>
