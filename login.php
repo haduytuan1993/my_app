@@ -21,8 +21,6 @@
   }
 
 ?>
-
-   
 <div class="container">
      <form method="post">
         <div class="user">

@@ -3,8 +3,13 @@ session_start();
 If(!isset($_SESSION["user"])){
       header('location: ../login.php');
  }
+ else {
   $data = $_SESSION["user"];
-
+   }
+  if ($_SESSION['timeout'] + 480 < time()) {
+      session_unset();
+       header('location: ../logout.php');
+  }
 ?>
 <!DOCTYPE html>
 <html>

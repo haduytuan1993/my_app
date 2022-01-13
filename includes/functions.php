@@ -14,7 +14,6 @@ If(!$conn) {
 function registersucess($username,$password) {
    global $conn;
    db_connect();
-
    $data_user = [
      'username' => $username,
      'password' => $password
@@ -37,6 +36,7 @@ If(!$result){
    while($row = mysqli_fetch_assoc($result)) {
         if($row['username'] == $username && $row['password'] == $password ) {
             $_SESSION["user"] = $row;
+            $_SESSION['timeout'] = time();
         }
         else {
             header('location: login.php');

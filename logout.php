@@ -6,7 +6,6 @@
 </head>
 <body>
 <?php 
-include 'includes/functions.php';
   if(isset($_SESSION['user'])) {
   	  unset($_SESSION['user']);
   }

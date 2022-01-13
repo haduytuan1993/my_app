@@ -18,6 +18,12 @@ include 'includes/functions.php';
      'password' => ''
     ];
    $error = [ ];
+   //Kiểm tra xem user có đang trong trạng thái đăng nhập không ? nếu đăng nhập rồi thì chuyển sang 
+   //trang dashboard.php
+ $user = get_user_active();
+ if(!empty($user)) {
+    header('location: admin/dashboard.php');
+ }
    If(isset($_POST["submit"])){   
       $data["username"] =$_POST["username"];    
       $data["password"] = $_POST["password"];
