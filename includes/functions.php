@@ -1,7 +1,6 @@
 <?php
-session_start();
 global $conn;
-function get_user_active() {
+function is_login() {
     return isset($_SESSION['user']) ? $_SESSION['user'] : array();
 }
  function db_connect() {
@@ -11,14 +10,15 @@ If(!$conn) {
   die ('Connection failed to database');
  }
 }
-function registersucess($username,$password) {
+function register_user($username,$email,$password) {
    global $conn;
    db_connect();
    $data_user = [
      'username' => $username,
+     'email' => $email,
      'password' => $password
    ];
- $query = "INSERT INTO register_user(username, password) VALUES ('$username','$password')";
+ $query = "INSERT INTO register_user(username, email, password) VALUES ('$username','$email','$password')";
  
 $result = mysqli_query($conn, $query);
 If(!$result){ 
@@ -28,7 +28,7 @@ If(!$result){
   return $data_user;
  }
 
- function get_user($username, $password) {
+ function get_user($username,$password) {
       global $conn;
       db_connect();
    $query = "SELECT * FROM register_user";
@@ -39,7 +39,7 @@ If(!$result){
             $_SESSION['timeout'] = time();
         }
         else {
-            header('location: login.php');
+            header('location: admin/dashboard.php');
         }
    }
  }

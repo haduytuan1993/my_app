@@ -1,39 +1,29 @@
-<?php include "includes/functions.php"; ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title></title>
-</head>
-<body>
-
 <?php 
- $user = get_user_active();
- if(!empty($user)) {
- 	 header('location: admin/dashboard.php');
- }
+ // $user = is_login();
+ // if(!empty($user)) {
+ // 	 header('location: /my_app');
+ // }
 
  if(isset($_POST['submit'])) { 
    	  $username = $_POST['username'];
    	  $password = $_POST['password'];
-   get_user($username, $password); 
-   header('location: admin/dashboard.php');
+   get_user($username,$password); 
+   header('location: /my_app');
   }
 
 ?>
-<div class="container">
+  <div class='login-form'>
+    <div class="container">
      <form method="post">
         <div class="user">
-        <lable>Username</label>
-        <input type="username" name="username" value=""/>
+        <h4>Username</h4>
+        <input type="text" name="username" class='username' value=""/>
          </div>
          <div class="psw">
-         <label>Password</label>
+         <h4>Password</h4>
          <input type="password" name="password" value=""/> 
          </div>
-          <input type="submit" name="submit" value="Submit" />
+          <input type="submit" class='sign-in-button' name="submit" value="Submit" />
      </form>
+ </div>
 </div>
-
-</body>
-</html>

@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title></title>
-</head>
-<body>
+<?php session_start(); ?>
 <?php 
   if(isset($_SESSION['user'])) {
-  	  unset($_SESSION['user']);
+  	  session_destroy();
   }
-   header('location: login.php');
-
+  header('location: /my_app');
 ?>
-</body>
-</html>
+
